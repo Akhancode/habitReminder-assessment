@@ -3,7 +3,7 @@ import api, { completeById } from '../api/api';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 
-const Dashboard = () => {
+const Home = () => {
   const [habitsData, setHabitsData] = useState([])
   const getHabits = async () => {
     const response = await api.get('/habit');
@@ -81,4 +81,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Home

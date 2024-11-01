@@ -10,6 +10,7 @@ import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
 import MainLayout from './components/Layout/MainLayout';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
+import Home from './pages/Home';
 
 const App = () => {
   return (
@@ -19,7 +20,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="/" element={<ProtectedRoute><MainLayout><Dashboard /></MainLayout></ProtectedRoute>} />
+        <Route path="/" element={<ProtectedRoute><MainLayout><Home /></MainLayout></ProtectedRoute>} />
+        <Route path="/dashboard" element={<ProtectedRoute><MainLayout><Dashboard/></MainLayout></ProtectedRoute>} />
         <Route path="/habit" element={<HabitForm />} />
         <Route path="/habit/:habitId" element={<HabitForm />}/>
         <Route path="/progress-rewards" element={<ProgressRewards />} />
