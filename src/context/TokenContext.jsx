@@ -8,6 +8,7 @@ export const TokenContext = createContext();
 const TokenProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
+
     useEffect(() => {
         axios.interceptors.request.use(
             (config) => {
@@ -17,6 +18,7 @@ const TokenProvider = ({ children }) => {
             (error) => Promise.reject(error)
         );
     }, []);
+
 
     const loginUser = async (userData) => {
         const response = await login(userData);
@@ -34,7 +36,7 @@ const TokenProvider = ({ children }) => {
     };
 
     return (
-        <TokenContext.Provider value={{ user, loginUser, registerUser, logoutUser }}>
+        <TokenContext.Provider value={{ user,setUser, loginUser, registerUser, logoutUser }}>
             {children}
         </TokenContext.Provider>
     );

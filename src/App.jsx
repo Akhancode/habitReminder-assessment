@@ -9,21 +9,22 @@ import ProgressRewards from './pages/Progress';
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
 import MainLayout from './components/Layout/MainLayout';
+import ProtectedRoute from './components/Layout/protectedRoute/ProtectedRoute';
 
 const App = () => {
   return (
     <Router>
-     
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
 
-          <Route path="/" element={<MainLayout><Dashboard /></MainLayout>} />
-          <Route path="/habit" element={<HabitForm />} />
-          <Route path="/progress-rewards" element={<ProgressRewards />} />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-        </Routes>
-   
+        <Route path="/" element={<ProtectedRoute><MainLayout><Dashboard /></MainLayout></ProtectedRoute>} />
+        <Route path="/habit" element={<HabitForm />} />
+        <Route path="/progress-rewards" element={<ProgressRewards />} />
+
+      </Routes>
+
     </Router>
   );
 };
