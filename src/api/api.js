@@ -6,6 +6,20 @@ const api = axios.create({
     baseURL: 'http://localhost:9000/api', // Replace with your API URL
 });
 
+api.interceptors.request.use(
+    config => {
+      // Retrieve token from localStorage
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        config.headers['Authorization'] = `${token}`;
+      }
+      return config;
+    },
+    error => {
+      return Promise.reject(error);
+    }
+  );
+  
 // Add a response interceptor
 api.interceptors.response.use(
     response => response,

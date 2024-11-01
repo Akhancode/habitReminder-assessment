@@ -1,13 +1,13 @@
 // TokenContext.js
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
-import { login } from "../api/authApi";
+import { login, register } from "../api/authApi";
+import { useNavigate } from "react-router-dom";
 
 export const TokenContext = createContext();
 
 const TokenProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-
 
     useEffect(() => {
         axios.interceptors.request.use(
@@ -23,6 +23,9 @@ const TokenProvider = ({ children }) => {
     const loginUser = async (userData) => {
         const response = await login(userData);
         setUser(response.user); // Assuming your API response includes user data
+
+
+
     };
 
     const registerUser = async (userData) => {
@@ -36,7 +39,7 @@ const TokenProvider = ({ children }) => {
     };
 
     return (
-        <TokenContext.Provider value={{ user,setUser, loginUser, registerUser, logoutUser }}>
+        <TokenContext.Provider value={{ user, setUser, loginUser, registerUser, logoutUser }}>
             {children}
         </TokenContext.Provider>
     );
