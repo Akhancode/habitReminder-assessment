@@ -59,5 +59,9 @@ export const getHabits = async () => {
   const response = await api.get('/habit');
   return response.data; // Handle response as needed
 };
+export const getProgress = async () => {
+  const response = await api.get('/progress');
+  return response.data; // Handle response as needed
+};
 
 export default api;

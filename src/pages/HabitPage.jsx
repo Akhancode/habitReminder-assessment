@@ -23,9 +23,7 @@ const HabitPage = () => {
       fetchHabitData(habitId);
     }
   }, [habitId]);
-  useEffect(()=>{
-    console.log(initialData)
-  },[initialData])
+
 
 
   const handleFormSubmit = async (habitData) => {
