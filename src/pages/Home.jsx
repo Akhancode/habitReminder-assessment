@@ -47,6 +47,13 @@ const Home = () => {
                 textColor = "orange"
               }
               let isDone = (habit?.streak?.lastCompletedDate && moment(habit?.streak?.lastCompletedDate).isSame(moment(), 'day')) ? true : false
+              let isToday = true
+              if (!habit?.streak?.lastCompletedDate || habit.frequency == "daily") {
+                isToday = moment().isSame(moment(habit?.streak?.lastCompletedDate).add(1, 'day'), 'day');
+              }
+              if (!habit?.streak?.lastCompletedDate || habit.frequency == "weekly") {
+                isToday = moment().isSame(moment(habit?.streak?.lastCompletedDate).add(1, 'week'), 'day');
+              }
 
 
               return (
@@ -54,15 +61,21 @@ const Home = () => {
                   <div className='flex-initial  w-[40%] flex justify-center items-center'>{habit.title}</div>
                   <div className='flex-1 flex gap-2 '>
                     {
-                      isDone ?
+                      (isDone ?
                         <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded" disabled>
                           Done
                         </button>
                         :
-                        <button onClick={() => { handleComplete(habit._id) }} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                        isToday&&<button onClick={() => { handleComplete(habit._id) }} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
                           Mark done
                         </button>
+                      )
 
+                    }
+                    {
+                      (!isToday&&!isDone) && <button class="bg-slate-200 hover:bg-gray-100 text-gray-700 font-bold py-2 px-4 border border-green-700 rounded" disabled>
+                        Not Today
+                      </button>
                     }
                     <button onClick={() => { gotoEdit(habit._id) }} class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 border border-gray-700 rounded">
                       edit
