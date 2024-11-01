@@ -37,5 +37,17 @@ api.interceptors.response.use(
         return Promise.reject(error); 
     }
 );
+export const createHabit = async (data) => {
+  const response = await api.post(`/habit`, data);
+  return response.data; // Handle response as needed
+};
+export const updateHabit = async (data) => {
+  const response = await api.put(`/habit/${data._id}`, data);
+  return response.data; // Handle response as needed
+};
+export const getHabitById = async (habitId) => {
+  const response = await api.get(`/habit/${habitId}`);
+  return response.data; // Handle response as needed
+};
 
 export default api;
