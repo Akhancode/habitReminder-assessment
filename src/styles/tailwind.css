@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add CSS to color code the cells based on completion frequency */
+.color-empty {
+    fill: #ebedf0;
+  }
+  .color-scale-1 {
+    fill: #8bbfe4;
+  }
+  .color-scale-2 {
+    fill: #6fabc9;
+  }
+  .color-scale-3 {
+    fill: #236c9a;
+  }
+  .color-scale-4 {
+    fill: #195761;
+  }

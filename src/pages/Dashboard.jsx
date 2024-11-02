@@ -4,6 +4,7 @@ import CategoryPieChart from '../components/CategoryPieChart';
 import api, { getHistories, getProgress } from '../api/api';
 import LineChart from '../components/LineChart';
 import { transformData } from '../utils/helper';
+import { useNavigate } from 'react-router-dom';
 // import LineChart from '../components/LineChart';
 // import  LineChart, { progressData } from '../components/LineChart';
 
@@ -13,6 +14,7 @@ import { transformData } from '../utils/helper';
 //   { id: 3, name: 'Meditate', streak: 7, rewardPoints: 15 },
 // ];
 const Dashboard = () => {
+  const navigate = useNavigate()
   const [historiesData, setHistoriesData] = useState({})
   const getHistoriesData = async () => {
     const response = await getHistories()
@@ -22,7 +24,9 @@ const Dashboard = () => {
     getHistoriesData()
   }, [])
 
-
+  const redirectToProgress = (habitId) => {
+    navigate(`/progress/${habitId}`)
+  }
 
   const HealthData = historiesData.Health || []
   const WorkData = historiesData.Work || []
@@ -92,6 +96,7 @@ const Dashboard = () => {
   const [categoryBreakdown, setCategoryBreakdown] = useState({})
   const getHabits = async () => {
     const response = await getProgress()
+    console.log(response?.habitProgress)
     setHabitsData(response?.habitProgress)
     setCategoryBreakdown(response?.categoryBreakdown)
   }
@@ -107,7 +112,7 @@ const Dashboard = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-3">
           {habitsData?.map((habit) => (
-            <div key={habit.id} className="bg-white shadow-md rounded-lg p-4 flex flex-row justify-between">
+            <div key={habit._id} onClick={()=>{redirectToProgress(habit._id)}}className="bg-white active:bg-gray-200 hover:bg-gray-200 shadow-md rounded-lg p-4 flex flex-row justify-between">
               <div>
                 <h2 className="text-xl font-semibold mb-2">{habit?.title}</h2>
                 <p>{habit?.category}</p>
@@ -115,8 +120,8 @@ const Dashboard = () => {
               </div>
 
               <div className='self-end'>
-                <p className="text-gray-700">🔥Streak: <span className="font-bold">{habit?.streak?.consecutiveDays || 0} days</span></p>
-                <p className="text-gray-700">🪙Points: <span className="font-bold">{habit?.streak?.points || 0}</span></p>
+                <p className="text-gray-700 select-none">🔥Streak: <span className="font-bold">{habit?.streak?.consecutiveDays || 0} days</span></p>
+                <p className="text-gray-700 select-none">🪙Points: <span className="font-bold">{habit?.streak?.points || 0}</span></p>
               </div>
               {/* <button className="mt-auto bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200">
                 View Details

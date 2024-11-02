@@ -45,7 +45,7 @@ const CategoryPieChart = ({ categoryBreakdown }) => {
   };
 
   return (
-    <div  className='bg-white w-full h-2/6 py-2 '>
+    <div  className='bg-white w-full min-h-80 py-2 '>
       <Pie data={data} options={options} />
     </div>
   );
