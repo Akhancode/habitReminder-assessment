@@ -63,5 +63,9 @@ export const getProgress = async () => {
   const response = await api.get('/progress');
   return response.data; // Handle response as needed
 };
+export const getHistories = async () => {
+  const response = await api.get('/history/withHabit');
+  return response.data; // Handle response as needed
+};
 
 export default api;
