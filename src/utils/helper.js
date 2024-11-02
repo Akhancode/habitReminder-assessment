@@ -42,3 +42,5 @@ export function getTotalPoints(habits) {
 
   return totalPoints;
 }
+
+export const BASEURLAZURE = "http://gomarble-assessment.centralindia.cloudapp.azure.com"

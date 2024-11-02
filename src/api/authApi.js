@@ -1,7 +1,9 @@
 
 import axios from 'axios';
+import { BASEURLAZURE } from '../utils/helper';
 
-const API_URL = 'http://localhost:9000/auth'; // Replace with your API URL
+// const API_URL = 'http://localhost:9000/auth'; // Replace with your API URL
+const API_URL = `${BASEURLAZURE}/auth`; // Replace with your API URL
 
 export const register = async (userData) => {
     const response = await axios.post(`${API_URL}/register`, userData);

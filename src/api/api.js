@@ -1,9 +1,12 @@
 // api.js
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BASEURLAZURE } from "../utils/helper";
+
 
 const api = axios.create({
-  baseURL: "http://localhost:9000/api", // Replace with your API URL
+  // baseURL: "http://localhost:9000/api", // Replace with your API URL
+  baseURL: `${BASEURLAZURE}/api`, // Replace with your API URL
 });
 
 api.interceptors.request.use(
