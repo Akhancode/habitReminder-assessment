@@ -26,9 +26,19 @@ export function transformData(data) {
 }
 
 export const getTodayTime = (time) => {
-    const [hours, minutes] = time.split(':');
-    const today = new Date();
-    today.setHours(hours, minutes, 0, 0); // Set time to the specified hour and minute
-    return today;
-  };
+  const [hours, minutes] = time.split(":");
+  const today = new Date();
+  today.setHours(hours, minutes, 0, 0); // Set time to the specified hour and minute
+  return today;
+};
+export function getTotalPoints(habits) {
+  let totalPoints = 0;
 
+  habits.forEach((habit) => {
+    if (habit.streak && habit.streak.points) {
+      totalPoints += habit.streak.points;
+    }
+  });
+
+  return totalPoints;
+}

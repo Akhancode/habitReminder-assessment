@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -16,11 +16,16 @@ const Navbar = () => {
     navigate('/dashboard')
 
   }
-  const location = useLocation();
+  const { habitId } = useParams();;
+  const redirectToEdit = (habitId) => {
+    navigate(`/habit/${habitId}`)
+
+  }
+  const location = useLocation()
 
   const currentPath = location.pathname;
   let LeftDiv = <div>
-    <h3 className='font-semibold text-2xl text-white'>Habits</h3>
+    <h3 onClick={redirectToHome} className='font-semibold text-2xl text-white'>Habits</h3>
   </div>
   let RightDiv = <div className='flex items-center justify-end gap-3'>
     <button onClick={gotoAddPage} className='flex items-center hover:text-gray-400 active:text-gray-700 cursor-pointer justify-center  font-semibold text-4xl text-white'>+</button>
@@ -37,6 +42,14 @@ const Navbar = () => {
       <h3 onClick={redirectToHome} className='font-semibold text-2xl text-white'>🔙</h3>
     </div>
     RightDiv = <div className='flex items-center justify-end gap-3'>
+    </div>
+  }
+  if (currentPath.startsWith('/progress')) {
+
+    LeftDiv = <div>
+      <h3 onClick={redirectToHome} className='font-semibold text-2xl text-white'>🔙</h3>
+    </div>
+    RightDiv = <div onClick={() => (redirectToEdit(habitId))} className='flex items-center justify-end gap-3'>✏️
     </div>
   }
   return (

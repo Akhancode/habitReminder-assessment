@@ -30,9 +30,9 @@ const Home = () => {
       const reminderB = b.reminder || '';
 
       // If either reminder is missing, prioritize that entry
-      if (!reminderA && !reminderB) return 0; 
-      if (!reminderA) return -1; 
-      if (!reminderB) return 1; 
+      if (!reminderA && !reminderB) return 0;
+      if (!reminderA) return -1;
+      if (!reminderB) return 1;
 
       const [hoursA, minutesA] = reminderA.split(':').map(Number);
       const [hoursB, minutesB] = reminderB.split(':').map(Number);
@@ -70,15 +70,17 @@ const Home = () => {
     getHabits()
   }, [])
 
-
+  const redirectToProgress = (habitId) => {
+    navigate(`/progress/${habitId}`)
+  }
   return (
     (habitsUpcomingData.length || habitsDoneData.length) ?
       <div className='flex flex-col flex-grow text-black bg-[#efefef] min-h-full' >
         <div>
 
-          <div className='bg-[#efefef] py-5 flex justify-between text-gray-500'>
-            <div className='flex-initial  w-[40%]'></div>
-            <div className='flex-1  '>
+          <div className='bg-[#efefef] border py-5 flex justify-between text-gray-500'>
+            <div className='flex-initial  w-[60%]'></div>
+            <div className='flex-1 '>
               {habitsUpcomingData.length ? "Upcoming Today" : "No Upcoming Habit Today"}
             </div>
           </div>
@@ -104,8 +106,11 @@ const Home = () => {
 
 
                 return (
-                  <div style={{ color: textColor }} className='bg-white hover:bg-slate-100 active:bg-gray-300 py-4 font-semibold flex justify-between text-green-500 shadow-sm'>
-                    <div className='flex-initial  w-[40%] flex justify-center items-center'>{habit.title}   <p className='px-3 text-gray-400 font-thin text-sm'>{habit?.reminder}</p></div>
+                  <div onClick={(e)=>{
+                    e.stopPropagation();
+                    redirectToProgress(habit._id)
+                  }} style={{ color: textColor }} className='bg-white hover:bg-slate-100 active:bg-gray-300 py-4 font-semibold flex justify-between text-green-500 shadow-sm'>
+                    <div className='flex-initial  w-[60%] flex justify-center items-center'>{habit.title}   <p className='px-3 text-gray-400 font-thin text-sm'>{habit?.reminder}</p></div>
                     <div className='flex-1 flex gap-2 '>
                       {
                         (isDone ?
@@ -113,7 +118,10 @@ const Home = () => {
                             Done
                           </button>
                           :
-                          <button onClick={() => { handleComplete(habit._id) }} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                          <button onClick={(e) => {
+                            e.stopPropagation();
+                            handleComplete(habit._id)
+                          }} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
                             Mark done
                           </button>
                         )
@@ -136,8 +144,8 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='bg-[#efefef] py-5 flex justify-between text-gray-500'>
-          <div className='flex-initial  w-[40%]'></div>
+        <div className='bg-[#efefef]  py-5 flex justify-between text-gray-500'>
+          <div className='flex-initial  w-[60%]'></div>
           <div className='flex-1  '>
             {habitsDoneData.length ? " Completed Today" : "Nothing Completed Today"}
 
@@ -165,8 +173,11 @@ const Home = () => {
 
 
               return (
-                <div style={{ color: textColor }} className='bg-white hover:bg-slate-100 active:bg-gray-300 py-4 font-semibold flex justify-between text-green-500 shadow-sm'>
-                  <div className='flex-initial  w-[40%] flex justify-center items-center'>{habit.title}</div>
+                <div onClick={(e)=>{
+                  e.stopPropagation();
+                  redirectToProgress(habit._id)
+                }} style={{ color: textColor }} className='bg-white hover:bg-slate-100 active:bg-gray-300 py-4 font-semibold flex justify-between text-green-500 shadow-sm'>
+                  <div className='flex-initial  w-[60%] flex justify-center items-center'>{habit.title}</div>
                   <div className='flex-1 flex gap-2 '>
                     {
                       (isDone ?

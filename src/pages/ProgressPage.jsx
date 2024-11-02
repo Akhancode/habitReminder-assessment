@@ -25,11 +25,7 @@ const ProgressPage = () => {
 
       <Navbar />
       <HabitDetail habitData={progressData} />
-      {/* <HabitForm
-        initialData={initialData}
-        onSubmit={handleFormSubmit}
-        mode={isEditMode ? 'edit' : 'create'}
-      /> */}
+ 
     </div>
   );
 };
