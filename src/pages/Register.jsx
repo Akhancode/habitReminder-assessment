@@ -23,6 +23,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await registerUser(formData);
+    navigate('/');
     // Add success handling (e.g., redirect, message)
   };
   return (
