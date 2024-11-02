@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import api, { completeById } from '../api/api';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
+import { getTodayTime } from '../utils/helper';
 
 const Home = () => {
   const [habitsData, setHabitsData] = useState([])
@@ -23,7 +24,25 @@ const Home = () => {
       }
 
       return isToday
-    })
+    }).sort((a, b) => {
+      // Handle cases where reminder is not provided
+      const reminderA = a.reminder || ''; // Default to empty string if no reminder
+      const reminderB = b.reminder || '';
+
+      // If either reminder is missing, prioritize that entry
+      if (!reminderA && !reminderB) return 0; 
+      if (!reminderA) return -1; 
+      if (!reminderB) return 1; 
+
+      const [hoursA, minutesA] = reminderA.split(':').map(Number);
+      const [hoursB, minutesB] = reminderB.split(':').map(Number);
+      const totalMinutesA = hoursA * 60 + minutesA;
+      const totalMinutesB = hoursB * 60 + minutesB;
+
+      return totalMinutesA - totalMinutesB;
+    });
+
+
     let doneHabitData = response?.data?.filter((habit) => {
       let isToday = true
       //is it new - one 
@@ -32,7 +51,6 @@ const Home = () => {
       }
       return isToday
     })
-    console.log(doneHabitData)
     setHabitsDoneData(doneHabitData)
     setHabitsUpcomingData(todayHabitData)
     // setHabitsData(todayHabitData)
@@ -56,12 +74,12 @@ const Home = () => {
   return (
     (habitsUpcomingData.length || habitsDoneData.length) ?
       <div className='flex flex-col flex-grow text-black bg-[#efefef] min-h-full' >
-        {<div>
+        <div>
 
           <div className='bg-[#efefef] py-5 flex justify-between text-gray-500'>
             <div className='flex-initial  w-[40%]'></div>
             <div className='flex-1  '>
-             { habitsUpcomingData.length?"Upcoming Today":"No Upcoming Habit Today"}
+              {habitsUpcomingData.length ? "Upcoming Today" : "No Upcoming Habit Today"}
             </div>
           </div>
           <div className='flex  flex-col gap-1'>
@@ -87,7 +105,7 @@ const Home = () => {
 
                 return (
                   <div style={{ color: textColor }} className='bg-white hover:bg-slate-100 active:bg-gray-300 py-4 font-semibold flex justify-between text-green-500 shadow-sm'>
-                    <div className='flex-initial  w-[40%] flex justify-center items-center'>{habit.title}</div>
+                    <div className='flex-initial  w-[40%] flex justify-center items-center'>{habit.title}   <p className='px-3 text-gray-400 font-thin text-sm'>{habit?.reminder}</p></div>
                     <div className='flex-1 flex gap-2 '>
                       {
                         (isDone ?
@@ -116,13 +134,13 @@ const Home = () => {
             }
 
           </div>
-        </div>}
+        </div>
 
         <div className='bg-[#efefef] py-5 flex justify-between text-gray-500'>
           <div className='flex-initial  w-[40%]'></div>
           <div className='flex-1  '>
-          { habitsDoneData.length?" Completed Today":"Nothing Completed Today"}
-         
+            {habitsDoneData.length ? " Completed Today" : "Nothing Completed Today"}
+
           </div>
         </div>
         <div className='flex  flex-col gap-1'>

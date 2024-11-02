@@ -16,7 +16,6 @@ const Dashboard = () => {
   const [historiesData, setHistoriesData] = useState({})
   const getHistoriesData = async () => {
     const response = await getHistories()
-    console.log(transformData(response))
     setHistoriesData(transformData(response))
   }
   useEffect(() => {
@@ -93,7 +92,6 @@ const Dashboard = () => {
   const [categoryBreakdown, setCategoryBreakdown] = useState({})
   const getHabits = async () => {
     const response = await getProgress()
-    console.log(response)
     setHabitsData(response?.habitProgress)
     setCategoryBreakdown(response?.categoryBreakdown)
   }

@@ -25,4 +25,10 @@ export function transformData(data) {
   return result;
 }
 
+export const getTodayTime = (time) => {
+    const [hours, minutes] = time.split(':');
+    const today = new Date();
+    today.setHours(hours, minutes, 0, 0); // Set time to the specified hour and minute
+    return today;
+  };
 
