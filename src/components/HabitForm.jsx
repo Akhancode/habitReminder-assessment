@@ -108,7 +108,7 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
                         name="category"
                         value={habit.category}
                         onChange={handleChange}
-                        className="appearance-none border-2 border-gray-300 rounded-lg w-full py-3 px-4 text-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
+                        className="appearance-none border-2 border-gray-300 rounded-lg w-full py-2 px-4 text-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
                         required
                     >
                         <option value="" disabled>Select Category</option>
@@ -130,7 +130,7 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
                         name="frequency"
                         value={habit.frequency}
                         onChange={handleChange}
-                        className="appearance-none border-2 border-gray-300 rounded-lg w-full py-3 px-4 text-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
+                        className="appearance-none border-2 border-gray-300 rounded-lg w-full py-2 px-4 text-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
                         required
                     >
                         <option value="" disabled>Select frequency</option>
@@ -149,24 +149,49 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
             <div className="bg-[#edeef2] opacity-85 rounded-3xl p-4 py-6 flex flex-row sm:flex-row justify-between items-center space-y-2 sm:space-y-0 h-[15%]">
                 <label className="text-gray-900 text-xl w-full sm:w-auto">Reminder</label>
                 <div className="flex gap-2 w-full sm:w-auto">
-                    <input
-                        type="string"
-                        name="hours"
-                        value={habit.reminder?.split(":")[0]}
-                        onChange={handleReminderChange_v2}
+                    <div className="relative w-full sm:w-20">
+                        <select
+                            name="hours"
+                            value={hours || habit.reminder?.split(":")[0]}
+                            onChange={handleReminderChange_v2}
+                            className="appearance-none border-2 border-gray-300 rounded-lg w-full py-2 px-2 text-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
 
-                        className="border rounded w-full sm:w-20 py-2 px-3 h-full"
-                        placeholder="HH"
-                    />
-                    <input
-                        type="string"
-                        name="minutes"
-                        value={habit.reminder?.split(":")[1]}
-                        onChange={handleReminderChange_v2}
+                        >
+                            <option value="" disabled>Select Hour</option>
+                            {/* Generate options from 0 to 23 */}
+                            {Array.from({ length: 24 }, (_, index) => (
+                                <option key={index} value={index}>
+                                    {index < 10 ? `0${index}` : index}
+                                </option>
+                            ))}
+                        </select>
+                        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                            <span className="text-gray-500">▼</span>
+                        </div>
+                    </div>:
+                    <div className="relative w-full sm:w-20">
+                        <select
+                            name="minutes"
+                            value={minutes || habit.reminder?.split(":")[1]}
+                            onChange={handleReminderChange_v2}
+                            className="appearance-none border-2 border-gray-300 rounded-lg w-full py-2 px-4 text-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
+                            required
+                        >
+                            <option value="" disabled>Select Minute</option>
+                            {/* Generate options from 0 to 59 with leading zero for single digits */}
+                            {Array.from({ length: 60 }, (_, index) => (
+                                <option key={index} value={index} className="text-lg">
+                                    {index < 10 ? `0${index}` : index}
+                                </option>
+                            ))}
+                        </select>
+                        {/* Optional: Custom dropdown arrow */}
+                        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                            <span className="text-gray-500">▼</span>
+                        </div>
+                    </div>
 
-                        className="border rounded w-full sm:w-20 py-2 px-3 h-full"
-                        placeholder="MM"
-                    />
+
                 </div>
             </div>
 

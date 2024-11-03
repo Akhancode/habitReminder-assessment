@@ -38,7 +38,7 @@ function Card({ habit, completed = false, handleComplete }) {
 
     return (
         <div onClick={()=>{redirectToDetails(habit._id)}} className={`${colorByCategory} opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
-            <div>
+            <div className='flex items-center justify-center gap-5'>
                 <p className="text-gray-800 text-2xl">{title}</p>
                 <p className="text-gray-400 text-sm">{habit?.reminder||""}</p>
 
