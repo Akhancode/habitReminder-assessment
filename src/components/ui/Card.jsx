@@ -3,6 +3,12 @@ import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 
 function Card({ habit, completed = false, handleComplete }) {
+
+
+
+
+
+
     const navigate = useNavigate()
     let title = habit?.title
     let category = habit?.category
