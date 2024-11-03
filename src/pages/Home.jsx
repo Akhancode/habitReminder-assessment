@@ -95,7 +95,8 @@ const Home = () => {
   const [viewType, setViewType] = useState("today")
   return (
     (habitsUpcomingData.length || habitsDoneData.length) ?
-      <div className='flex flex-col flex-grow text-black bg-white w-full' >
+    <div className='flex flex-col flex-grow text-black bg-white  w-full sm:px-12 md:px-24 md:flex-row md:flex-wrap'>
+
         <DateNav viewType={viewType} setViewType={setViewType} />
         {/* <CategoryLabel/> */}
         {viewType == "today" && <div>
@@ -103,7 +104,7 @@ const Home = () => {
           {/* upcoming today */}
           <div>
 
-            <div className='flex px-5 mt-5  flex-col gap-2'>
+            <div className='flex px-5 mt-5  w-full flex-col gap-2 md:flex-row md:flex-wrap '>
               {
                 habitsUpcomingData.map((habit) => {
                   "Health", "Work", "Personal Development"
@@ -166,7 +167,7 @@ const Home = () => {
           </div>
 
           {/* completed */}
-          <div className='flex px-5 my-8  flex-col gap-2 '>
+          <div className='flex px-5 my-8  flex-col gap-2 md:flex-row md:flex-wrap '>
 
             {
               habitsDoneData.map((habit) => {

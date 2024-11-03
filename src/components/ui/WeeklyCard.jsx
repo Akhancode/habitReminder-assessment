@@ -61,13 +61,13 @@ const HabitTracker = ({ habit, markCustomDay }) => {
     //     console.log(habit)
     // }
     return (
-        <div className='px-5 mt-2 font-sans w-full text-base text-gray-800'>
+        <div className='md:w-1/2 px-5 mt-2  font-sans w-full text-base text-gray-800'>
             <div className={`${colorByCategoryPrimary} p-4 rounded-3xl w-full mx-auto px-10 py-10`}>
                 <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-2xl text-gray-700 capitalize">{title}</h3>
-                    <span className="text-xl text-gray-500 capitalize">{frequency}</span>
+                    <h3 className="text-2xl text-gray-700 capitalize md:text-4xl">{title}</h3>
+                    <span className="text-xl text-gray-500 capitalize md:text-3xl">{frequency}</span>
                 </div>
-                <div className="grid grid-cols-7 gap-2 max-w-full">
+                <div className=" grid grid-cols-7 gap-2 max-w-full">
                     {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day) => (
                         <div key={day} className="flex flex-col items-center">
                             <span className={`text-sm text-gray-700 ${day === todayDDD ? `${colorByCategoryText} font-bold` : ''}`}>
