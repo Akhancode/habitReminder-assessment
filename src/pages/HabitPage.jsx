@@ -21,6 +21,13 @@ const HabitPage = () => {
         setInitialData(data);
       };
       fetchHabitData(habitId);
+    }else{
+      setInitialData({
+        title: '',
+        category: 'Health',
+        frequency: 'daily',
+        reminder: '',
+      });
     }
   }, [habitId]);
 

@@ -91,7 +91,7 @@ const Home = () => {
     navigate(`/progress/${habitId}`)
   }
 
-  const [viewType, setViewType] = useState("weekly")
+  const [viewType, setViewType] = useState("today")
   return (
 
     (habitsUpcomingData.length || habitsDoneData.length) ?

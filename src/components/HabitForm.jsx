@@ -3,11 +3,12 @@ import React, { useState, useEffect } from 'react';
 import TimePicker from 'react-time-picker';
 import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';
+import ToggleButton from './ui/toggleButton';
 const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
     const [habit, setHabit] = useState({
         title: '',
-        category: '',
-        frequency: '',
+        category: 'Health',
+        frequency: 'daily',
         reminder: '',
         ...initialData, // Pre-fill fields if data is provided (edit mode)
     });
@@ -18,11 +19,12 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
     // Update form fields as user types
     const handleChange = (e) => {
         const { name, value } = e.target;
+  
         setHabit((prev) => ({ ...prev, [name]: value }));
     };
-
     // Handle form submission
     const handleSubmit = (e) => {
+
         e.preventDefault();
         onSubmit(habit);
     };
@@ -57,37 +59,43 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
 
     return (
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md space-y-4">
-            <h2 className="text-2xl font-semibold">{mode === 'edit' ? 'Edit Habit' : 'Create Habit'}</h2>
-
-            <div className="flex flex-col">
-                <label className="text-gray-700">Habit Title</label>
+            <h2 className="w-full bg-white py-5 border-gray-100  flex font-sans  text-5xl text-gray-600  ">{mode === 'edit' ? 'Update ' : 'Create '} <p className='ml-1 text-black'> Habit</p> </h2>
+            <div className={`bg-[#edeef2] opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
                 <input
                     type="text"
                     name="title"
                     value={habit.title}
                     onChange={handleChange}
-                    className="border rounded py-2 px-3"
-                    placeholder="Enter habit name"
+                    class="border-0 text-2xl bg-transparent p-0 outline-none cursor-text "
+                    placeholder="Habit Name"
                     required
                 />
             </div>
+            <div className={`bg-[#edeef2] opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
+                <label className="text-gray-900 text-2xl">Category</label>
+               <ToggleButton value={habit.category} setHabit={setHabit} type='category' />
 
-            <div className="flex flex-col">
-                <label className="text-gray-700">Category</label>
-                <select
+                {/* <select
                     name="category"
                     value={habit.category}
                     onChange={handleChange}
-                    className="border rounded py-2 px-3"
+                    className="border-2  "
                     required
                 >
                     <option value="" disabled>Select Category</option>
                     <option value="Health">Health</option>
                     <option value="Work">Work</option>
                     <option value="Personal Development">Personal Development</option>
-                </select>
+                </select> */}
             </div>
-            <div className="flex flex-col">
+            <div className={`bg-[#edeef2] opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
+                <label className="text-gray-900 text-2xl">Frequency</label>
+               <ToggleButton value={habit.frequency} setHabit={setHabit} />
+            </div>
+
+
+        
+            {/* <div className="flex flex-col">
                 <label className="text-gray-700">Frequency</label>
                 <select
                     name="frequency"
@@ -101,7 +109,7 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
                     <option value="weekly">Weekly</option>
                     <option value="monthly">Monthly</option>
                 </select>
-            </div>
+            </div> */}
 
             <div className="flex flex-col">
                 <label className="text-gray-700">Reminder</label>
