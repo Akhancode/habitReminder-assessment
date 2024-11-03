@@ -84,31 +84,31 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md space-y-4 h-[70vh] min-w-full max-w-lg overflow-y-auto flex flex-col">
-            <h2 className="w-full py-3 text-3xl font-sans text-gray-600 flex items-center justify-start">
+        <form onSubmit={handleSubmit} className="  lg:px-64 p-6 rounded shadow-md space-y-4 h-[70vh] min-w-full max-w-lg overflow-y-auto flex flex-col">
+            {/* <h2 className="w-full py-3 text-3xl font-sans text-gray-600 flex items-center justify-start">
                 {mode === 'edit' ? 'Update' : 'Create'} <span className='ml-1 text-black'>Habit</span>
-            </h2>
+            </h2> */}
 
-            <div className="bg-[#edeef2] opacity-85 rounded-3xl p-4 py-6 flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0 h-[15%]">
+            <div className="bg-[#edeef2] opacity-85 rounded-3xl p-4  smd:py-6  flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0 h-[10%] md:h-[15%]">
                 <input
                     type="text"
                     name="title"
                     value={habit.title}
                     onChange={handleChange}
-                    className="w-full sm:w-auto text-xl bg-transparent outline-none cursor-text h-full"
+                    className="w-full sm:w-auto text-lg md:text-2xl bg-transparent outline-none cursor-text h-full"
                     placeholder="Habit Name"
                     required
                 />
             </div>
 
-            <div className="bg-[#edeef2] opacity-85 rounded-3xl p-4 py-6 flex flex-row sm:flex-row justify-between items-center space-y-2 sm:space-y-0 h-[15%]">
+            <div className="bg-[#edeef2] opacity-85 rounded-3xl p-4 py-6 flex flex-row sm:flex-row justify-between items-center space-y-2 sm:space-y-0 h-[12%] md:h-[15%]">
                 <label className="text-gray-900 text-xl w-full sm:w-auto">Category</label>
-                <div className="relative w-full sm:w-auto">
+                <div className="relative sm:w-auto w-fit">
                     <select
                         name="category"
                         value={habit.category}
                         onChange={handleChange}
-                        className="appearance-none border-2 border-gray-300 rounded-lg w-full py-2 px-4 text-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
+                        className="appearance-none border-2 border-gray-300 rounded-3xl w-full py-2 px-4 text-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
                         required
                     >
                         <option value="" disabled>Select Category</option>
@@ -125,12 +125,12 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
 
             <div className="bg-[#edeef2] opacity-85 rounded-3xl p-4 py-6 flex flex-row sm:flex-row  justify-between items-center space-y-2 sm:space-y-0 h-[15%]">
                 <label className="text-gray-900 text-xl w-full sm:w-auto">Frequency</label>
-                <div className="relative w-full sm:w-auto">
+                <div className="relative w-fit sm:w-auto">
                     <select
                         name="frequency"
                         value={habit.frequency}
                         onChange={handleChange}
-                        className="appearance-none border-2 border-gray-300 rounded-lg w-full py-2 px-4 text-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
+                        className="appearance-none border-2 rounded-3xl border-gray-300  w-full py-2 px-4 text-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
                         required
                     >
                         <option value="" disabled>Select frequency</option>
@@ -173,7 +173,7 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
                             value={minutes || habit.reminder?.split(":")[1]}
                             onChange={handleReminderChange_v2}
                             className="appearance-none border-2 border-gray-300 rounded-lg w-full py-2 px-4 text-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
-                            required
+                           
                         >
                             <option value="" disabled>Select Minute</option>
                             {/* Generate options from 0 to 59 with leading zero for single digits */}
@@ -193,7 +193,7 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
 
             <button
                 type="submit"
-                className="w-full py-2 rounded-3xl text-xl bg-blue-500 text-white flex items-center justify-center hover:bg-blue-700 h-[15%]"
+                className="w-full  md:text-3xl rounded-3xl text-xl bg-blue-500 text-white flex items-center justify-center hover:bg-blue-700 h-[10%] md:h-[15%]"
             >
                 {mode === 'edit' ? 'Update Habit' : 'Create Habit'}
             </button>
