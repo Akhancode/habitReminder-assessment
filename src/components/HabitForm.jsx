@@ -193,7 +193,7 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
 
             <button
                 type="submit"
-                className="w-full  md:text-3xl rounded-3xl text-xl opacity-85 shadow-md bg-[#176fea] text-white flex items-center justify-center hover:bg-blue-700 h-[7%] md:h-[15%]"
+                className="w-full  md:text-3xl rounded-3xl text-xl opacity-85 shadow-md bg-[#176fea] text-white flex items-center justify-center hover:bg-blue-700 py-2 h-[9%] md:h-[15%]"
             >
                 {mode === 'edit' ? 'Update Habit' : 'Create Habit'}
             </button>
