@@ -47,7 +47,7 @@ const HabitPage = () => {
   };
 
   return (
-    <div className='flex flex-col flex-grow text-black  min-h-screen ' >
+    <div className='flex flex-col flex-grow text-black  ' >
 
       <Navbar />
       <HabitForm

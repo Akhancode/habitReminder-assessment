@@ -39,12 +39,8 @@ function Login() {
     // Add success handling (e.g., redirect, message)
   };
   return (
-    <section className="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0">
-      <h1 class="text-4xl font-semibold text-gray-800 text-center md:text-5xl lg:text-6xl 
-            leading-tight tracking-tight 
-            bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text
-          
-            hover:drop-shadow-lg transition ease-in-out duration-300">
+    <section className="h-screen flex flex-col items-center justify-center">
+      <h1 className="text-3xl md:text-5xl font-bold text-gray-700 text-center mt-5 mb-10">
         Habit Tracker
       </h1>
       <div className="md:w-1/3 max-w-sm">

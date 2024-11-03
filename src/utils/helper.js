@@ -45,8 +45,7 @@ export function getTotalPoints(habits) {
   return totalPoints;
 }
 
-export const BASEURLAZURE = "http://localhost:9000";
-("http://gomarble-assessment.centralindia.cloudapp.azure.com");
+export const BASEURLAZURE ="http://gomarble-assessment.centralindia.cloudapp.azure.com";
 
 export function getTodayDayShortFormat() {
   return moment().format("ddd");
@@ -81,17 +80,16 @@ export function getWeekData(data) {
   });
 }
 
-
 export function getISODateForDay(day) {
   const weekDays = {};
-  const startOfWeek = moment().startOf('isoWeek'); // Get the start of the week (Monday)
+  const startOfWeek = moment().startOf("isoWeek"); // Get the start of the week (Monday)
 
   // Loop through each day of the week (0 to 6 for Mon to Sun)
   for (let i = 0; i < 7; i++) {
-      const dayKey = startOfWeek.clone().add(i, 'days').format('ddd'); // Get the day's abbreviation
-      const isoDate = startOfWeek.clone().add(i, 'days').toISOString(); // Get the ISO date
-      weekDays[dayKey] = isoDate; // Assign the ISO date as the value
+    const dayKey = startOfWeek.clone().add(i, "days").format("ddd"); // Get the day's abbreviation
+    const isoDate = startOfWeek.clone().add(i, "days").toISOString(); // Get the ISO date
+    weekDays[dayKey] = isoDate; // Assign the ISO date as the value
   }
   //  weekDays
-   return(weekDays[day])
+  return weekDays[day];
 }
