@@ -42,8 +42,8 @@ const Navbar = () => {
 
   let screenName = <h1 className="text-2xl font-normal capitalize ">habits</h1>
   //Home
-  let LeftDiv = <div>
-    <Squares2X2Icon strokeWidth={1.5} onClick={redirectToDashBoard} className="w-6 h-6 active:scale-75 text-gray-700" />
+  let LeftDiv = <div className='flex text-2xl justify-center items-center gap-2 text-gray-800 cursor-pointer active:scale-90 select-none ' onClick={redirectToDashBoard}>
+    <Squares2X2Icon strokeWidth={1.8}  className="w-6 h-6 text-gray-800" /> Dashboard
   </div>
   let RightDiv = <div className="flex items-center space-x-4">
     <PlusIcon strokeWidth={1.5} onClick={gotoAddPage} className="w-7 h-7 active:scale-75 text-gray-700" />

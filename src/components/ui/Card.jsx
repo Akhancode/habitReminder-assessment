@@ -45,7 +45,7 @@ function Card({ habit, completed = false, handleComplete }) {
             </div>
             {isDone ? (
                 <div className='flex gap-6'>
-                    <p className='text-lg text-gray-400 font-extralight '>completed</p>
+                    <p className=' absolute bottom-2 right-7 text-sm text-gray-400 font-extralight '>completed</p>
                     <CheckCircleIcon
 
                         className="h-8 w-8 text-green-500 transition-transform duration-200 ease-in-out transform hover:scale-110 active:scale-90"

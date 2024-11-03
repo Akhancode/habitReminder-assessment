@@ -12,7 +12,7 @@ const DateNav = ({ viewType = "today", setViewType }) => {
     setViewType(value)
   }
   return (
-    <div className='w-full bg-white py-5 border-gray-100 border-b-[1px] flex font-sans  px-6 text-2xl text-gray-400 gap-3 '>
+    <div className='w-full bg-white py-5 h-fit  border-gray-100 border-b-[1px] flex font-sans  px-6 text-2xl text-gray-400 gap-3 '>
       <p onClick={() => {
         onClickNav("today")
       }} className={`cursor-pointer select-none transition-colors duration-500  ${viewType === 'today' ? 'text-black' : 'text-gray-300'}`}>Today</p>
