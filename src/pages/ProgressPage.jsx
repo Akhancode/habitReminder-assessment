@@ -21,7 +21,7 @@ const ProgressPage = () => {
 
 
   return (
-    <div className='flex flex-col flex-grow text-black bg-[#efefef] min-h-full' >
+    <div className='flex flex-col flex-grow text-black bg-red-50 min-h-screen' >
 
       <Navbar />
       <HabitDetail habitData={progressData} />

@@ -92,7 +92,7 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md space-y-4">
+        <form onSubmit={handleSubmit} className=" p-6 rounded space-y-4">
             <h2 className="w-full bg-white py-5 border-gray-100  flex font-sans  text-5xl text-gray-600  ">{mode === 'edit' ? 'Update ' : 'Create '} <p className='ml-1 text-black'> Habit</p> </h2>
             <div className={`bg-[#edeef2] opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
                 <input

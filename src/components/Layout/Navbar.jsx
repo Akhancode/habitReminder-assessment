@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import { Squares2X2Icon, PlusIcon, BookmarkIcon, ArrowLeftIcon ,PencilIcon , PowerIcon} from '@heroicons/react/24/outline';
+import { Squares2X2Icon, PlusIcon, BookmarkIcon, ArrowLeftIcon, PencilIcon, PowerIcon } from '@heroicons/react/24/outline';
+import LogoutModal from '../modal/LogoutModal';
 
 
 const Navbar = () => {
@@ -14,10 +15,17 @@ const Navbar = () => {
     navigate('/')
 
   }
-  const logout = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleLogout = () => {
+    // Perform logout actions here
+
     localStorage.removeItem("accessToken");
     navigate('/login')
-
+  };
+  const logout = () => {
+    setIsModalOpen(true); // Close the modal after logging out
+    console.log("Logged out");
   }
   const redirectToDashBoard = () => {
     navigate('/dashboard')
@@ -69,14 +77,20 @@ const Navbar = () => {
     screenName = "Progress Details"
     LeftDiv = <div>
       <ArrowLeftIcon onClick={redirectToHome} strokeWidth={2} className="w-6 h-6 active:scale-75 text-gray-700" /> </div>
-    RightDiv = <PencilIcon onClick={() => (redirectToEdit(habitId))}  strokeWidth={1.5} className='w-6 h-6   flex cursor-pointer  items-center justify-end gap-3' />
+    RightDiv = <PencilIcon onClick={() => (redirectToEdit(habitId))} strokeWidth={1.5} className='w-6 h-6   flex cursor-pointer  items-center justify-end gap-3' />
   }
   return (
     // <div className=' cursor-pointer bg-[#424242] min-h-20 max-h-28 flex justify-between items-center px-6'>
     //   {LeftDiv}
     //   {RightDiv}
     // </div>
+
     <nav className=" w-full flex items-center justify-between px-4 py-5 border-b  min-h-20 max-h-28 bg-white">
+      <LogoutModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onLogout={handleLogout}
+      />
       {/* Left Icon */}
       {LeftDiv}
 

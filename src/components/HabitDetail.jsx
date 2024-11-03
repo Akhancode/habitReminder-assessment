@@ -16,7 +16,7 @@ const HabitDetail = ({ habitData }) => {
 
 
     return (
-        <div className="container capitalize mx-auto p-6 bg-white shadow-lg rounded-lg">
+        <div className="container capitalize mx-auto p-6  rounded-lg">
             <div className="mb-4 p-4 bg-white rounded-lg shadow-md flex flex-col gap-3">
                 <h1 className="text-3xl font-bold text-gray-800 mb-4 ">{String(habitData.title)}</h1>
                 <h2 className="text-xl font-semibold text-gray-700">📝 Details</h2>
