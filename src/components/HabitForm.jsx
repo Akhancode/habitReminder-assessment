@@ -36,7 +36,7 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
 
 
 
-    if(!habit.reminder){
+    if (!habit.reminder) {
         habit.reminder = "00:00"
     }
     const [hours, setHours] = useState(habit.reminder.split(":")[0]);
@@ -64,14 +64,6 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
         }));
     };
 
-
-
-
-
-
-
-
-
     const handleReminderChange_v2 = (e) => {
         const { name, value } = e.target;
 
@@ -92,85 +84,87 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md space-y-4 ">
-            <h2 className="w-full bg-white py-5 border-gray-100  flex font-sans  text-5xl text-gray-600  ">{mode === 'edit' ? 'Update ' : 'Create '} <p className='ml-1 text-black'> Habit</p> </h2>
-            <div className={`bg-[#edeef2] opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
-                <input
-                    type="text"
-                    name="title"
-                    value={habit.title}
-                    onChange={handleChange}
-                    class="border-0 text-2xl bg-transparent p-0 outline-none cursor-text "
-                    placeholder="Habit Name"
-                    required
-                />
-            </div>
-            <div className={`bg-[#edeef2] opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
-                <label className="text-gray-900 text-2xl">Category</label>
-                <select
-                    name="category"
-                    value={habit.category}
-                    onChange={handleChange}
-                    className="border-2  "
-                    required
-                >
-                    <option value="" disabled>Select Category</option>
-                    <option value="Health">Health</option>
-                    <option value="Work">Work</option>
-                    <option value="Personal Development">Personal Development</option>
-                </select>
-            </div>
-            <div className={`bg-[#edeef2] opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
-                <label className="text-gray-900 text-2xl">Frequency</label>
-                <select
-                    name="frequency"
-                    value={habit.frequency}
-                    onChange={handleChange}
-                    className="border rounded py-2 px-3"
-                    required
-                >
-                    <option value="" disabled>Select frequency</option>
-                    <option value="daily">Daily</option>
-                    <option value="weekly">Weekly</option>
-                    <option value="monthly">Monthly</option>
-                </select>
+            <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md space-y-4 h-[70vh] min-w-full max-w-lg overflow-y-auto flex flex-col">
+                <h2 className="w-full py-3 text-3xl font-sans text-gray-600 flex items-center justify-start">
+                    {mode === 'edit' ? 'Update' : 'Create'} <span className='ml-1 text-black'>Habit</span>
+                </h2>
 
-            </div>
-            <div className={`bg-[#edeef2] opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
-                <label className="text-gray-900 text-2xl">Reminder</label>
-                <div className='flex gap-2'>
+                <div className="bg-[#edeef2] opacity-85 rounded-3xl p-4 py-6 flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0 h-[15%]">
                     <input
-                        type="number"
-                        name="hours"
-                        value={habit.reminder?.split(":")[0]}
-                        onChange={handleReminderChange_v2}
-                        min="0"
-                        max="23"
-                        className="border rounded py-2 px-3 w-20"
-                        placeholder="HH"
+                        type="text"
+                        name="title"
+                        value={habit.title}
+                        onChange={handleChange}
+                        className="w-full sm:w-auto text-xl bg-transparent outline-none cursor-text h-full"
+                        placeholder="Habit Name"
+                        required
                     />
-                    <input
-                        type="number"
-                        name="minutes"
-                        value={habit.reminder?.split(":")[1]}
-                        onChange={handleReminderChange_v2}
-                        min="0"
-                        max="59"
-                        className="border rounded py-2 px-3 w-20"
-                        placeholder="MM"
-                    />
-
                 </div>
 
-            </div>
+                <div className="bg-[#edeef2] opacity-85 rounded-3xl p-4 py-6 flex flex-row sm:flex-row justify-between items-center space-y-2 sm:space-y-0 h-[15%]">
+                    <label className="text-gray-900 text-xl w-full sm:w-auto">Category</label>
+                    <select
+                        name="category"
+                        value={habit.category}
+                        onChange={handleChange}
+                        className="border-2 rounded w-full sm:w-auto py-2 px-3 h-full"
+                        required
+                    >
+                        <option value="" disabled>Select Category</option>
+                        <option value="Health">Health</option>
+                        <option value="Work">Work</option>
+                        <option value="Personal Development">Personal Development</option>
+                    </select>
+                </div>
 
+                <div className="bg-[#edeef2] opacity-85 rounded-3xl p-4 py-6 flex flex-row sm:flex-row  justify-between items-center space-y-2 sm:space-y-0 h-[15%]">
+                    <label className="text-gray-900 text-xl w-full sm:w-auto">Frequency</label>
+                    <select
+                        name="frequency"
+                        value={habit.frequency}
+                        onChange={handleChange}
+                        className="border rounded w-full sm:w-auto py-2 px-3 h-full"
+                        required
+                    >
+                        <option value="" disabled>Select frequency</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+                </div>
 
+                <div className="bg-[#edeef2] opacity-85 rounded-3xl p-4 py-6 flex flex-row sm:flex-row justify-between items-center space-y-2 sm:space-y-0 h-[15%]">
+                    <label className="text-gray-900 text-xl w-full sm:w-auto">Reminder</label>
+                    <div className="flex gap-2 w-full sm:w-auto">
+                        <input
+                            type="string"
+                            name="hours"
+                            value={habit.reminder?.split(":")[0]}
+                            onChange={handleReminderChange_v2}
+                    
+                            className="border rounded w-full sm:w-20 py-2 px-3 h-full"
+                            placeholder="HH"
+                        />
+                        <input
+                            type="string"
+                            name="minutes"
+                            value={habit.reminder?.split(":")[1]}
+                            onChange={handleReminderChange_v2}
+                     
+                            className="border rounded w-full sm:w-20 py-2 px-3 h-full"
+                            placeholder="MM"
+                        />
+                    </div>
+                </div>
 
- 
-            <button type="submit" className="w-full p-6 text-start capitalize py-8 rounded-3xl  flex justify-center text-2xl  bg-blue-500 text-white  px-4  hover:bg-blue-700 ">
-                {mode === 'edit' ? 'Update Habit' : 'Create Habit'}
-            </button>
-        </form>
+                <button
+                    type="submit"
+                    className="w-full py-2 rounded-3xl text-xl bg-blue-500 text-white flex items-center justify-center hover:bg-blue-700 h-[15%]"
+                >
+                    {mode === 'edit' ? 'Update Habit' : 'Create Habit'}
+                </button>
+            </form>
+
     );
 };
 

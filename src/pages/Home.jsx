@@ -95,9 +95,9 @@ const Home = () => {
   const [viewType, setViewType] = useState("today")
   return (
     (habitsUpcomingData.length || habitsDoneData.length) ?
-      <div className='flex flex-col flex-grow text-black bg-white min-h-full' >
+      <div className='flex flex-col flex-grow text-black bg-white w-full' >
         <DateNav viewType={viewType} setViewType={setViewType} />
-        <CategoryLabel/>
+        {/* <CategoryLabel/> */}
         {viewType == "today" && <div>
 
           {/* upcoming today */}
