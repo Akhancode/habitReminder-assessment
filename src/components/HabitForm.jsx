@@ -148,7 +148,7 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
 
             <div className="bg-[#edeef2] opacity-85 rounded-3xl p-4 py-6 flex flex-row sm:flex-row justify-between items-center space-y-2 sm:space-y-0 h-[15%]">
                 <label className="text-gray-900 text-xl w-full sm:w-auto">Reminder</label>
-                <div className="flex gap-2 w-full sm:w-auto">
+                <div className="flex gap-2 w-full sm:w-auto items-center justify-center">
                     <div className="relative w-full sm:w-20">
                         <select
                             name="hours"
@@ -165,9 +165,7 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
                                 </option>
                             ))}
                         </select>
-                        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                            <span className="text-gray-500">▼</span>
-                        </div>
+                      
                     </div>:
                     <div className="relative w-full sm:w-20">
                         <select
@@ -186,9 +184,7 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
                             ))}
                         </select>
                         {/* Optional: Custom dropdown arrow */}
-                        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                            <span className="text-gray-500">▼</span>
-                        </div>
+                      
                     </div>
 
 
