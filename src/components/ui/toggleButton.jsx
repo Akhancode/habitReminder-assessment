@@ -15,6 +15,9 @@ const ToggleButton = ({ value,
         }
         console.log(selected , type )
     }, [selected])
+    useEffect(() => {
+  
+    }, [value])
     
     return (
         <div className="flex bg-gray-100 rounded-full p-1 space-x-1 w-fit">

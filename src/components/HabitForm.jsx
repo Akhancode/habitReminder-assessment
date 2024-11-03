@@ -7,9 +7,9 @@ import ToggleButton from './ui/toggleButton';
 const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
     const [habit, setHabit] = useState({
         title: '',
-        category: 'Health',
-        frequency: 'daily',
-        reminder: '',
+        category: '',
+        frequency: '',
+        reminder: "00:00",
         ...initialData, // Pre-fill fields if data is provided (edit mode)
     });
     useEffect(() => {
@@ -19,20 +19,29 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
     // Update form fields as user types
     const handleChange = (e) => {
         const { name, value } = e.target;
-  
         setHabit((prev) => ({ ...prev, [name]: value }));
     };
+
     // Handle form submission
     const handleSubmit = (e) => {
-
         e.preventDefault();
         onSubmit(habit);
     };
-    let hours = null
-    let minutes = null
-    if (habit.reminder) {
-        [hours, minutes] = habit.reminder.split(':');
+
+
+
+
+
+
+
+
+
+    if(!habit.reminder){
+        habit.reminder = "00:00"
     }
+    const [hours, setHours] = useState(habit.reminder.split(":")[0]);
+    const [minutes, setMinutes] = useState(habit.reminder.split(":")[1]);
+
     const handleReminderChange = (e) => {
         const { name, value } = e.target;
 
@@ -57,6 +66,31 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
 
 
 
+
+
+
+
+
+
+    const handleReminderChange_v2 = (e) => {
+        const { name, value } = e.target;
+
+        // Update hours or minutes based on the input field
+        if (name === "hours") {
+            setHours(value);
+            setHabit((prevHabit) => ({
+                ...prevHabit,
+                reminder: `${value.padStart(2, "0")}:${minutes.padStart(2, "0")}`,
+            }));
+        } else if (name === "minutes") {
+            setMinutes(value);
+            setHabit((prevHabit) => ({
+                ...prevHabit,
+                reminder: `${hours.padStart(2, "0")}:${value.padStart(2, "0")}`,
+            }));
+        }
+    };
+
     return (
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md space-y-4">
             <h2 className="w-full bg-white py-5 border-gray-100  flex font-sans  text-5xl text-gray-600  ">{mode === 'edit' ? 'Update ' : 'Create '} <p className='ml-1 text-black'> Habit</p> </h2>
@@ -73,9 +107,7 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
             </div>
             <div className={`bg-[#edeef2] opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
                 <label className="text-gray-900 text-2xl">Category</label>
-               <ToggleButton value={habit.category} setHabit={setHabit} type='category' />
-
-                {/* <select
+                <select
                     name="category"
                     value={habit.category}
                     onChange={handleChange}
@@ -86,17 +118,10 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
                     <option value="Health">Health</option>
                     <option value="Work">Work</option>
                     <option value="Personal Development">Personal Development</option>
-                </select> */}
+                </select>
             </div>
             <div className={`bg-[#edeef2] opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
                 <label className="text-gray-900 text-2xl">Frequency</label>
-               <ToggleButton value={habit.frequency} setHabit={setHabit} />
-            </div>
-
-
-        
-            {/* <div className="flex flex-col">
-                <label className="text-gray-700">Frequency</label>
                 <select
                     name="frequency"
                     value={habit.frequency}
@@ -109,17 +134,16 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
                     <option value="weekly">Weekly</option>
                     <option value="monthly">Monthly</option>
                 </select>
-            </div> */}
 
-            <div className="flex flex-col">
-                <label className="text-gray-700">Reminder</label>
+            </div>
+            <div className={`bg-[#edeef2] opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
+                <label className="text-gray-900 text-2xl">Reminder</label>
                 <div className='flex gap-2'>
-
                     <input
                         type="number"
                         name="hours"
                         value={habit.reminder?.split(":")[0]}
-                        onChange={handleReminderChange}
+                        onChange={handleReminderChange_v2}
                         min="0"
                         max="23"
                         className="border rounded py-2 px-3 w-20"
@@ -129,15 +153,21 @@ const HabitForm = ({ initialData = {}, onSubmit, mode }) => {
                         type="number"
                         name="minutes"
                         value={habit.reminder?.split(":")[1]}
-                        onChange={handleReminderChange}
+                        onChange={handleReminderChange_v2}
                         min="0"
                         max="59"
                         className="border rounded py-2 px-3 w-20"
                         placeholder="MM"
                     />
+
                 </div>
+
             </div>
-            <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
+
+
+
+ 
+            <button type="submit" className="w-full p-6 text-start capitalize py-8 rounded-3xl  flex justify-center text-2xl  bg-blue-500 text-white  px-4  hover:bg-blue-700 ">
                 {mode === 'edit' ? 'Update Habit' : 'Create Habit'}
             </button>
         </form>

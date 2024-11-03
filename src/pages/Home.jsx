@@ -7,6 +7,7 @@ import { Squares2X2Icon, PlusIcon, BookmarkIcon } from '@heroicons/react/24/outl
 import Card from '../components/ui/Card';
 import DateNav from '../components/ui/DateNav';
 import HabitTracker from '../components/ui/WeeklyCard';
+import CategoryLabel from '../components/ui/CategoryLabel';
 
 const Home = () => {
   const [habitsData, setHabitsData] = useState([])
@@ -93,10 +94,10 @@ const Home = () => {
 
   const [viewType, setViewType] = useState("today")
   return (
-
     (habitsUpcomingData.length || habitsDoneData.length) ?
       <div className='flex flex-col flex-grow text-black bg-white min-h-full' >
         <DateNav viewType={viewType} setViewType={setViewType} />
+        <CategoryLabel/>
         {viewType == "today" && <div>
 
           {/* upcoming today */}

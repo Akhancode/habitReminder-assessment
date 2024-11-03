@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
+import { useNavigate } from 'react-router-dom';
 
 function Card({ habit, completed = false, handleComplete }) {
-
+    const navigate = useNavigate()
     let title = habit?.title
     let category = habit?.category
     let colorByCategory = "bg-pastel-green"; // Tailwind class should start with "bg-"
@@ -19,6 +20,10 @@ function Card({ habit, completed = false, handleComplete }) {
     const handleClickComplete = (habitId) => {
         handleComplete(habitId)
     }
+    const redirectToDetails = (habitId) => {
+        navigate(`/progress/${habitId}`)
+    
+    }
 
     const [isDone, setIsDone] = useState(completed);
     const toggleDone = () => setIsDone(!isDone);
@@ -26,8 +31,12 @@ function Card({ habit, completed = false, handleComplete }) {
     console.log(category, title, colorByCategory, String(category).toLowerCase() === "personal development");
 
     return (
-        <div className={`${colorByCategory} opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
-            <p className="text-gray-800 text-2xl">{title}</p>
+        <div onClick={()=>{redirectToDetails(habit._id)}} className={`${colorByCategory} opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
+            <div>
+                <p className="text-gray-800 text-2xl">{title}</p>
+                <p className="text-gray-400 text-sm">{habit?.reminder||""}</p>
+
+            </div>
             {isDone ? (
                 <div className='flex gap-6'>
                     <p className='text-lg text-gray-400 font-extralight '>completed</p>
@@ -39,7 +48,9 @@ function Card({ habit, completed = false, handleComplete }) {
                 </div>
             ) : (
                 <XCircleIcon
-                    onClick={() => { handleClickComplete(habit._id) }}
+                    onClick={(e) => { 
+                        e.stopPropagation()
+                        handleClickComplete(habit._id) }}
                     className="h-8 w-8 text-gray-400 transition-transform duration-200 ease-in-out transform hover:scale-110 active:scale-90"
                     strokeWidth={1.8} // Customize thickness
                 />
