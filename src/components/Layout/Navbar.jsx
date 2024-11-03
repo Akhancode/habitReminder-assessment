@@ -42,8 +42,8 @@ const Navbar = () => {
 
   let screenName = <h1 className="text-2xl font-normal capitalize ">habits</h1>
   //Home
-  let LeftDiv = <div className='flex text-2xl justify-center items-center gap-2 text-gray-800 cursor-pointer active:scale-90 select-none ' onClick={redirectToDashBoard}>
-    <Squares2X2Icon strokeWidth={1.8}  className="w-6 h-6 text-gray-800" /> Dashboard
+  let LeftDiv = <div className='flex text-2xl justify-center items-center font-[300] gap-2 text-gray-800 cursor-pointer active:scale-90 select-none ' onClick={redirectToDashBoard}>
+    <Squares2X2Icon strokeWidth={1.8}  className="w-6 h-6 text-gray-800 " /> Dashboard
   </div>
   let RightDiv = <div className="flex items-center space-x-4">
     <PlusIcon strokeWidth={1.5} onClick={gotoAddPage} className="w-7 h-7 active:scale-75 text-gray-700" />
@@ -52,8 +52,8 @@ const Navbar = () => {
 
   //habit - create/edit
   if (currentPath.startsWith('/habit')) {
-    screenName = <h2 className="w-full ml-1 py-3 text-3xl font-sans text-gray-600 flex items-center justify-center">
-      Create <span className='ml-1 text-black'>Habit</span>
+    screenName = <h2 className="w-full ml-1 py-3 text-3xl font-sans text-gray-500 flex items-center justify-center">
+      Create <span className='ml-1 text-black font-[500]'>Habit</span>
     </h2>
     LeftDiv = <ArrowLeftIcon strokeWidth={2} onClick={redirectToHome} className="w-6 h-6 active:scale-75 text-gray-700" />
     RightDiv = <div className="flex items-center space-x-4">
@@ -64,7 +64,7 @@ const Navbar = () => {
   }
   if (currentPath.startsWith('/habit/')) {
     //edit
-    screenName = <h2 className="w-full ml-1 py-3 text-3xl font-sans text-gray-600 flex items-center justify-center">
+    screenName = <h2 className="w-full ml-1 py-3 text-2xl font-sans text-gray-600 flex items-center justify-center">
       Update <span className='ml-1 text-black'>Habit</span>
     </h2>
   }

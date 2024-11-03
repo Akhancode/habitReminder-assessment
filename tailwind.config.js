@@ -20,6 +20,9 @@ module.exports = {
       fontFamily: {
         sans: ['Roboto', 'sans-serif']// Change 'Inter' to your chosen font
       },
+      // fontFamily: {
+      //   poppins: ['Poppins', 'sans-serif'],
+      // },
     },
   },
   plugins: [],

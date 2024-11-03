@@ -117,10 +117,10 @@ const Dashboard = () => {
           <p className="text-sm  sm:text-2xl  text-gray-600 text-wrap">Total Points 🪙: <span className="font-medium">{totalPoints || 0}</span></p>
           {/* <p className="text-gray-600">Badges 🌟: <span className="font-medium">{(habitData?.streak?.badges.join(',')) || 'n/a'}</span></p> */}
         </div>
-        <h1 className="text-3xl font-bold mb-6 text-center">Your Habits Dashboard</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center text-gray-700">Your Habits Dashboard</h1>
         <CategoryPieChart categoryBreakdown={categoryBreakdown} />
         <LineChart chartData={chartData} />
-        <h3 className="text-3xl font-bold mb-2 text-center">List of Habits</h3>
+        <h3 className="text-3xl font-bold mb-2 text-center text-gray-700">List of Habits</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-3">
           {habitsData?.map((habit) => (
             <div key={habit._id} onClick={() => { redirectToProgress(habit._id) }} className="bg-white active:bg-gray-200 hover:bg-gray-200 shadow-md rounded-lg p-4 flex flex-row justify-between">
