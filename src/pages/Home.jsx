@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import api, { completeById } from '../api/api';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
-import { getTodayTime } from '../utils/helper';
+import { getTodayTime, getWeekData } from '../utils/helper';
 import { Squares2X2Icon, PlusIcon, BookmarkIcon } from '@heroicons/react/24/outline';
 import Card from '../components/ui/Card';
 import DateNav from '../components/ui/DateNav';
@@ -14,6 +14,11 @@ const Home = () => {
   const [habitsUpcomingData, setHabitsUpcomingData] = useState([])
   const getHabits = async () => {
     const response = await api.get('/habit');
+    const habitWithThisWeekHistory = response?.data?.map((habit)=>{
+      const thisWeekHistories = getWeekData(habit.histories)
+      return {...habit,histories:thisWeekHistories}
+    })
+    setHabitsData(habitWithThisWeekHistory)
     let todayHabitData = response?.data?.filter((habit) => {
       let isToday = true
       //is it new - one 
@@ -58,6 +63,7 @@ const Home = () => {
     })
     setHabitsDoneData(doneHabitData)
     setHabitsUpcomingData(todayHabitData)
+
     // setHabitsData(todayHabitData)
   }
   const navigate = useNavigate()
@@ -80,7 +86,7 @@ const Home = () => {
     navigate(`/progress/${habitId}`)
   }
 
-  const [viewType, setViewType] = useState("today")
+  const [viewType, setViewType] = useState("weekly")
   return (
 
     (habitsUpcomingData.length || habitsDoneData.length) ?
@@ -215,7 +221,9 @@ const Home = () => {
         </div>
         }
         {
-          viewType == "weekly" && <HabitTracker />
+          viewType == "weekly" && habitsData.map((habit) => {
+            return <HabitTracker habit={habit} />
+          })
         }
 
 

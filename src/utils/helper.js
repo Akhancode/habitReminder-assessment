@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export function transformData(data) {
   const result = {};
 
@@ -43,4 +45,57 @@ export function getTotalPoints(habits) {
   return totalPoints;
 }
 
-export const BASEURLAZURE = "http://gomarble-assessment.centralindia.cloudapp.azure.com"
+export const BASEURLAZURE ="http://localhost:9000"
+  "http://gomarble-assessment.centralindia.cloudapp.azure.com";
+
+export function getTodayDayShortFormat() {
+  return moment().format("ddd");
+}
+export function getDayShortFormat(dateISO) {
+  return moment(dateISO).format("ddd");
+}
+export function getWeekData(data) {
+  const today = moment();
+  const dayOfWeek = today.day(); // Sunday = 0, Monday = 1, ..., Saturday = 6
+
+  let weekStart, weekEnd;
+
+  if (dayOfWeek === 0) {
+    // Sunday
+    weekStart = today.clone().subtract(6, "days"); // Previous Monday
+    weekEnd = today.clone();
+  } else if (dayOfWeek === 1) {
+    // Monday
+    weekStart = today.clone();
+    weekEnd = today.clone().add(6, "days"); // Coming Sunday
+  } else {
+    // Tuesday to Saturday
+    weekStart = today.clone().subtract(dayOfWeek - 1, "days"); // Previous Monday
+    weekEnd = today.clone().add(7 - dayOfWeek, "days"); // Coming Sunday
+  }
+
+  // Filter data within the week range
+  return data.filter((entry) => {
+    const createdAt = moment(entry.createdAt);
+    return createdAt.isBetween(weekStart, weekEnd, "day", "[]"); // Inclusive range
+  });
+}
+
+export function getISODateForDay(day) {
+  // Convert day to lowercase to match moment's short day format (ddd)
+  const targetDayIndex = moment().day(day).day(); // 0 (Sun) - 6 (Sat)
+  const today = moment();
+  const todayIndex = today.day();
+
+  let targetDate;
+
+  if (todayIndex <= targetDayIndex) {
+    // If today is before or on the target day, get the date this week
+    targetDate = today.clone().day(targetDayIndex);
+  } else {
+    // If today is after the target day, get the target day in the previous week
+    targetDate = today.clone().day(targetDayIndex + 7);
+  }
+
+  return targetDate.toISOString();
+}
