@@ -58,6 +58,12 @@ export const completeById = async (habitId) => {
   });
   return response.data; // Handle response as needed
 };
+export const completeByIdWIthCustomDate = async (habitId,createdAt) => {
+  const response = await api.post(`/streak/complete`, {
+    habitId,createdAt
+  });
+  return response.data; // Handle response as needed
+};
 export const getHabits = async () => {
   const response = await api.get('/habit');
   return response.data; // Handle response as needed

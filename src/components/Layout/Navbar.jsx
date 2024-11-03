@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import { Squares2X2Icon, PlusIcon, BookmarkIcon, ArrowLeftIcon ,PencilIcon} from '@heroicons/react/24/outline';
+import { Squares2X2Icon, PlusIcon, BookmarkIcon, ArrowLeftIcon ,PencilIcon , PowerIcon} from '@heroicons/react/24/outline';
 
 
 const Navbar = () => {
@@ -12,6 +12,11 @@ const Navbar = () => {
   }
   const redirectToHome = () => {
     navigate('/')
+
+  }
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    navigate('/login')
 
   }
   const redirectToDashBoard = () => {
@@ -34,7 +39,7 @@ const Navbar = () => {
   </div>
   let RightDiv = <div className="flex items-center space-x-4">
     <PlusIcon strokeWidth={1.5} onClick={gotoAddPage} className="w-7 h-7 active:scale-75 text-gray-700" />
-    <BookmarkIcon strokeWidth={1.5} className="w-7 h-7 text-gray-700" />
+    <PowerIcon onClick={logout} strokeWidth={1.5} className="w-7 h-7 active:scale-75 text-gray-700" />
   </div>
 
   //habit - create/edit
@@ -43,7 +48,8 @@ const Navbar = () => {
     LeftDiv = <ArrowLeftIcon strokeWidth={2} onClick={redirectToHome} className="w-6 h-6 active:scale-75 text-gray-700" />
     RightDiv = <div className="flex items-center space-x-4">
       <PlusIcon strokeWidth={1.5} onClick={gotoAddPage} className="w-7 h-7 active:scale-75 text-gray-700" />
-      <BookmarkIcon strokeWidth={1.5} className="w-7 h-7 text-gray-700" />
+      <PowerIcon onClick={logout} strokeWidth={1.5} className="w-7 h-7 active:scale-75 text-gray-700" />
+
     </div>
   }
   if (currentPath.startsWith('/habit/')) {

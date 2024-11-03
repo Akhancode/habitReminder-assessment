@@ -45,8 +45,8 @@ export function getTotalPoints(habits) {
   return totalPoints;
 }
 
-export const BASEURLAZURE ="http://localhost:9000"
-  "http://gomarble-assessment.centralindia.cloudapp.azure.com";
+export const BASEURLAZURE = "http://localhost:9000";
+("http://gomarble-assessment.centralindia.cloudapp.azure.com");
 
 export function getTodayDayShortFormat() {
   return moment().format("ddd");
@@ -81,21 +81,17 @@ export function getWeekData(data) {
   });
 }
 
+
 export function getISODateForDay(day) {
-  // Convert day to lowercase to match moment's short day format (ddd)
-  const targetDayIndex = moment().day(day).day(); // 0 (Sun) - 6 (Sat)
-  const today = moment();
-  const todayIndex = today.day();
+  const weekDays = {};
+  const startOfWeek = moment().startOf('isoWeek'); // Get the start of the week (Monday)
 
-  let targetDate;
-
-  if (todayIndex <= targetDayIndex) {
-    // If today is before or on the target day, get the date this week
-    targetDate = today.clone().day(targetDayIndex);
-  } else {
-    // If today is after the target day, get the target day in the previous week
-    targetDate = today.clone().day(targetDayIndex + 7);
+  // Loop through each day of the week (0 to 6 for Mon to Sun)
+  for (let i = 0; i < 7; i++) {
+      const dayKey = startOfWeek.clone().add(i, 'days').format('ddd'); // Get the day's abbreviation
+      const isoDate = startOfWeek.clone().add(i, 'days').toISOString(); // Get the ISO date
+      weekDays[dayKey] = isoDate; // Assign the ISO date as the value
   }
-
-  return targetDate.toISOString();
+  //  weekDays
+   return(weekDays[day])
 }
