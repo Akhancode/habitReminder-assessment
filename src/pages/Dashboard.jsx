@@ -108,7 +108,7 @@ const Dashboard = () => {
   }, [])
 
   return (
-    <div className='w-full bg-[#dbdada] flex flex-col '>
+    <div className='w-full bg-[#dbdada] flex flex-col  font-sans'>
       <div className="container mx-auto p-6 flex flex-col gap-4">
 
         <div className="mb-4 p-4 bg-white rounded-lg shadow-md flex flex-row justify-between gap-3">

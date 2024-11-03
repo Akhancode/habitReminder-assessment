@@ -8,7 +8,7 @@ import TokenProvider from './context/TokenContext.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <TokenProvider>
-      <App />
+      <App  />
     </TokenProvider>
   </StrictMode>,
 )

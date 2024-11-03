@@ -10,6 +10,9 @@ module.exports = {
         "heatmap-scale-3": "#239a3b",
         "heatmap-scale-4": "#196127",
       },
+      // fontFamily: {
+      //   sans: ["Nunito Sans", "sans-serif"], // Change 'Inter' to your chosen font
+      // },
     },
   },
   plugins: [],

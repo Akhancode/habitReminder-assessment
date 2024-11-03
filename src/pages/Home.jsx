@@ -3,6 +3,7 @@ import api, { completeById } from '../api/api';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { getTodayTime } from '../utils/helper';
+import { Squares2X2Icon, PlusIcon, BookmarkIcon } from '@heroicons/react/24/outline';
 
 const Home = () => {
   const [habitsData, setHabitsData] = useState([])
@@ -29,13 +30,14 @@ const Home = () => {
       const reminderA = a.reminder || ''; // Default to empty string if no reminder
       const reminderB = b.reminder || '';
 
+      console.log("a.reminder",a.reminder)
       // If either reminder is missing, prioritize that entry
       if (!reminderA && !reminderB) return 0;
       if (!reminderA) return -1;
       if (!reminderB) return 1;
 
-      const [hoursA, minutesA] = reminderA.split(':').map(Number);
-      const [hoursB, minutesB] = reminderB.split(':').map(Number);
+      const [hoursA, minutesA] = reminderA?.split(':').map(Number);
+      const [hoursB, minutesB] = reminderB?.split(':').map(Number);
       const totalMinutesA = hoursA * 60 + minutesA;
       const totalMinutesB = hoursB * 60 + minutesB;
 
@@ -73,9 +75,12 @@ const Home = () => {
   const redirectToProgress = (habitId) => {
     navigate(`/progress/${habitId}`)
   }
+
   return (
+
     (habitsUpcomingData.length || habitsDoneData.length) ?
       <div className='flex flex-col flex-grow text-black bg-[#efefef] min-h-full' >
+
         <div>
 
           <div className='bg-[#efefef] border py-5 flex justify-between text-gray-500'>
