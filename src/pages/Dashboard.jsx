@@ -113,8 +113,8 @@ const Dashboard = () => {
 
         <div className="mb-4 p-4 bg-white rounded-lg shadow-md flex flex-row justify-between gap-3">
 
-          <h2 className="text-xl font-semibold text-gray-700">🏆 Rewards </h2>
-          <p className="text-gray-600">Total Points Gained 🪙: <span className="font-medium">{totalPoints || 0}</span></p>
+          <h2 className="text-sm sm:text-2xl  font-semibold text-gray-700">🏆 Rewards </h2>
+          <p className="text-sm  sm:text-2xl  text-gray-600 text-wrap">Total Points 🪙: <span className="font-medium">{totalPoints || 0}</span></p>
           {/* <p className="text-gray-600">Badges 🌟: <span className="font-medium">{(habitData?.streak?.badges.join(',')) || 'n/a'}</span></p> */}
         </div>
         <h1 className="text-3xl font-bold mb-6 text-center">Your Habits Dashboard</h1>
