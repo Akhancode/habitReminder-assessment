@@ -1,4 +1,4 @@
-# Project Name
+# Habit Tracker Front End : Assessment
 
 ## Overview
 This is a React.js application designed for **Habit Tracking **. The application allows users to create, update, and manage habit within different category and frequency . It features user authentication, Habit Management ,  Streaks & Rewards and Progress . 
