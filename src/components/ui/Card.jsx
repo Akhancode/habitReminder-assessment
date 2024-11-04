@@ -28,7 +28,7 @@ function Card({ habit, completed = false, handleComplete }) {
     }
     const redirectToDetails = (habitId) => {
         navigate(`/progress/${habitId}`)
-    
+
     }
 
     const [isDone, setIsDone] = useState(completed);
@@ -37,10 +37,10 @@ function Card({ habit, completed = false, handleComplete }) {
     console.log(category, title, colorByCategory, String(category).toLowerCase() === "personal development");
 
     return (
-        <div onClick={()=>{redirectToDetails(habit._id)}} className={`${colorByCategory} relative md:w-[48%] opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
+        <div onClick={() => { redirectToDetails(habit._id) }} className={`${colorByCategory} relative md:w-[48%] opacity-85 rounded-3xl p-6 text-start capitalize py-8 flex justify-between pr-7 `}>
             <div className='flex items-center justify-center gap-5'>
                 <p className="text-gray-800 text-2xl">{title}</p>
-                <p className= "absolute bottom-2 left-6 text-gray-400 text-sm">{habit?.reminder||""}</p>
+                <p className="absolute bottom-2 left-6 text-gray-400 text-sm">{habit?.reminder || ""}</p>
 
             </div>
             {isDone ? (
@@ -53,13 +53,14 @@ function Card({ habit, completed = false, handleComplete }) {
                     />
                 </div>
             ) : (
-                <XCircleIcon
-                    onClick={(e) => { 
+                <button
+                    onClick={(e) => {
                         e.stopPropagation()
-                        handleClickComplete(habit._id) }}
-                    className="h-8 w-8 text-gray-400 transition-transform duration-200 ease-in-out transform hover:scale-110 active:scale-90"
-                    strokeWidth={1.8} // Customize thickness
-                />
+                        handleClickComplete(habit._id)
+                    }}
+                    className={`aspect-square  rounded-full flex items-center justify-center mt-2 h-7 w-7 bg-[#e9ebee]  border-[0.1rem] border-slate-400 shadow-inner  hover:bg-slate-300 active:bg-white`}
+                >
+                </button>
             )}
         </div>
     );
