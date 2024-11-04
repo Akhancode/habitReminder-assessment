@@ -30,7 +30,7 @@ api.interceptors.response.use(
     const { status } = error.response;
 
     // Check if the error is due to an invalid token
-    if (status === 401) {
+    if (status === 401 || status == 400) {
       localStorage.removeItem("accessToken");
 
       const navigate = useNavigate();
