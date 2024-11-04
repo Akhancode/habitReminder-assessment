@@ -5,12 +5,9 @@ This is a React.js application designed for **Habit Tracking **. The application
 ## Table of Contents
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Sample Pages](#sample-pages)
-- [Task Assessment](#task-assessment)
 - [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Features
 - **User Authentication**: Register and Login functionality and saving accessToken in LocalStorage for persisting user. 
@@ -111,34 +108,13 @@ Follow these steps to set up the project locally.
    - **Mobile View**  
      ![register Page Mobile](./public/images/progress-sm.png)
 
-## Task Assessment
-Below are the requirements assessed in this project:
-
-- **User Interface**: Ensures a smooth user experience with intuitive UI design.
-- **Functionality**: Supports task creation, updates, and deletion.
-- **User Authentication**: Google Sign-In for secure and easy access.
-- **Code Quality**: Project follows React best practices with clean, maintainable code.
-- **Responsiveness**: Works well on mobile and desktop devices.
-
 ## Technologies Used
 - **React.js**: JavaScript library for building user interfaces
-- **React Router**: For navigation between pages
-- **Firebase Authentication**: For Google Sign-In integration
-- **CSS Modules**: For modular and maintainable styling
-- **React DnD**: For drag-and-drop task organization
+- **React Router**: For managing navigation between pages
+- **Tailwind CSS**: For utility-first, responsive, and customizable styling
+- **Chart.js**: For interactive and responsive charts and data visualizations
+- **Axios**: For handling HTTP requests to interact with APIs
 
-## Contributing
-We welcome contributions! If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcomed.
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature-name`)
-3. Commit your changes (`git commit -m 'Add some feature'`)
-4. Push to the branch (`git push origin feature-name`)
-5. Open a Pull Request
-
-## License
-This project is licensed under the MIT License.
-
----
 
 Thank you for checking out the project!
