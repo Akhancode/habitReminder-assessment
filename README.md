@@ -106,7 +106,7 @@ Follow these steps to set up the project locally.
    - **Desktop View**  
      ![register Page Desktop](./public/images/progress-xl.png)
    - **Mobile View**  
-     ![register Page Mobile](./public/images/progress-sm.png)
+     ![register Page Mobile](./public/images/progress.sm.png)
 
 ## Technologies Used
 - **React.js**: JavaScript library for building user interfaces
