@@ -22,7 +22,7 @@ const HabitDetail = ({ habitData }) => {
                 <h2 className="text-xl font-semibold text-gray-700">📝 Details</h2>
                 <p className="text-gray-600">Category: <span className="font-medium">{habitData?.category}</span></p>
                 <p className="text-gray-600">Frequency: <span className="font-medium">{habitData?.frequency}</span></p>
-                <p className="text-gray-600">Frequency: <span className="font-medium">{typeof habitData == "string" ? String(habitData?.reminder):"n/a"}</span></p>
+                <p className="text-gray-600">Reminder: <span className="font-medium">{habitData?.reminder ? String(habitData?.reminder):"n/a"}</span></p>
                 {/* <p className="text-gray-600">Reminder: <span className="font-medium">{habitData?.reminder'}</span></p> */}
             </div>
 
