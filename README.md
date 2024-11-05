@@ -1,4 +1,8 @@
-# Project Name
+# Habit Tracker Front End : Assessment
+
+## Live Demo (Deployed)
+Check out the deployed app here: [Habit Tracker Live](http://gomarble-assessment.centralindia.cloudapp.azure.com)
+
 
 ## Overview
 This is a React.js application designed for **Habit Tracking **. The application allows users to create, update, and manage habit within different category and frequency . It features user authentication, Habit Management ,  Streaks & Rewards and Progress . 
@@ -106,7 +110,7 @@ Follow these steps to set up the project locally.
    - **Desktop View**  
      ![register Page Desktop](./public/images/progress-xl.png)
    - **Mobile View**  
-     ![register Page Mobile](./public/images/progress-sm.png)
+     ![register Page Mobile](./public/images/progress.sm.png)
 
 ## Technologies Used
 - **React.js**: JavaScript library for building user interfaces
