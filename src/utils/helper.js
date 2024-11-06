@@ -45,7 +45,7 @@ export function getTotalPoints(habits) {
   return totalPoints;
 }
 
-export const BASEURLAZURE ="http://gomarble-assessment.centralindia.cloudapp.azure.com";
+export const BASEURLAZURE ="http://ec2-13-60-185-56.eu-north-1.compute.amazonaws.com"//"http://gomarble-assessment.centralindia.cloudapp.azure.com";
 
 export function getTodayDayShortFormat() {
   return moment().format("ddd");
